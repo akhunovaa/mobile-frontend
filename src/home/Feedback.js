@@ -20,7 +20,7 @@ class Feedback extends Component {
                                 <Form.Input fluid icon='user' iconPosition='left' placeholder='Имя' />
                                 <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail' />
                                 <Form.Input fluid icon='phone' iconPosition='left' placeholder='Телефон' />
-                                <Form.TextArea fluid placeholder='Ваше сообщение' />
+                                <Form.TextArea placeholder='Ваше сообщение' />
                                 <Button color='teal' fluid size='large'>
                                     Отправить
                                 </Button>
