@@ -11,7 +11,7 @@ class AppHeader extends Component {
                     <a href="/">
                         <img src={logo} className="logo" alt='RuSberbank.ru logo picture'/>
                     </a>
-                            {!this.props.authenticated ? (
+                            {this.props.authenticated ? (
                                 <div>
                                     {/*<a style={{float: 'right'}} onClick={this.props.onLogout}>ВЫЙТИ</a>*/}
                                     {/*<NavLink style={{float: 'right'}} to="/profile">ПРОФИЛЬ</NavLink>*/}

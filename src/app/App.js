@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import NotFound from '../common/NotFound';
 import Home from '../home/Home';
+import SignUp from '../home/SignUp';
 import LoadingIndicator from '../common/LoadingIndicator';
 import Alert from 'react-s-alert';
 import 'react-s-alert/dist/s-alert-default.css';
@@ -87,6 +88,7 @@ class App extends Component {
                     <MobileAppHeader authenticated={this.state.authenticated}/>
                     <Switch>
                         <Route exact path="/" component={Home}/>
+                        <Route exact path="/signup" component={SignUp}/>
                         <Route component={NotFound}/>
                     </Switch>
                     <MobileAppFooter authenticated={this.state.authenticated}/>
@@ -101,6 +103,7 @@ class App extends Component {
                     <AppHeader authenticated={this.state.authenticated}/>
                     <Switch>
                         <Route exact path="/" component={Home}/>
+                        <Route exact path="/signup" component={SignUp}/>
                         <Route component={NotFound}/>
                     </Switch>
                     <AppFooter authenticated={this.state.authenticated}/>

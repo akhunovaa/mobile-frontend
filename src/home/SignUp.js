@@ -3,7 +3,7 @@ import './Home.css';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import logo from '../img/logo.jpg';
 
-class Home extends Component {
+class SignUp extends Component {
 
     state = {};
 
@@ -13,7 +13,7 @@ class Home extends Component {
                 <Grid className={"login-form"} textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                     <Grid.Column className="grid-column">
                         <Header as='h2' color='teal' textAlign='center'>
-                            <Image src={logo} /> Добро пожаловать
+                            <Image src={logo} /> Регистрация
                         </Header>
                         <Form size='large'>
                             <Segment stacked>
@@ -27,12 +27,12 @@ class Home extends Component {
                                 />
 
                                 <Button color='teal' fluid size='large'>
-                                    Войти
+                                    Зарегистрироваться
                                 </Button>
                             </Segment>
                         </Form>
                         <Message>
-                            Нет аккаунта? <a href='/signup'>Зарегистрироваться!</a>
+                            Уже зарегистрированы? <a href='/'>Авторизоваться!!</a>
                         </Message>
                     </Grid.Column>
                 </Grid>
@@ -41,4 +41,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default SignUp;
