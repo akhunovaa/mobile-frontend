@@ -29,11 +29,6 @@
 
 .ui.basic.button.context_menu {
     opacity: 1;
-    /*position: absolute;*/
-    /*width: 31.625px;*/
-    /*height: 22px;*/
-    /*left: 33.875px;*/
-    /*top: 19px;*/
     margin-top: 15px;
     margin-left: 15px;
     box-shadow: none;
