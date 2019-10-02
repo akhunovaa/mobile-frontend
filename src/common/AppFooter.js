@@ -7,7 +7,7 @@ class AppFooter extends Component {
     render() {
         return (
             <div id="footer">
-                {!this.props.authenticated ? (
+                {this.props.authenticated ? (
                         <div id="footer-center">
                             <ul>
                                 <li><NavLink to="/feedback">ОБРАТНАЯ СВЯЗЬ</NavLink></li>

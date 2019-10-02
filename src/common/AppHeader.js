@@ -13,7 +13,7 @@ class AppHeader extends Component {
                     </a>
                     <ul>
                         <div className="header-right" >
-                            {!this.props.authenticated ? (
+                            {this.props.authenticated ? (
                                 <div>
                                     <a style={{float: 'right'}} onClick={this.props.onLogout}>ВЫЙТИ</a>
                                     <NavLink style={{float: 'right'}} to="/profile">ПРОФИЛЬ</NavLink>
