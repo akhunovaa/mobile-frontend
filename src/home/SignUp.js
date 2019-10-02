@@ -17,12 +17,20 @@ class SignUp extends Component {
                         </Header>
                         <Form size='large'>
                             <Segment stacked>
-                                <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail или login' />
+                                <Form.Input fluid icon='user' iconPosition='left' placeholder='Login' />
+                                <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail' />
                                 <Form.Input
                                     fluid
                                     icon='lock'
                                     iconPosition='left'
                                     placeholder='Пароль'
+                                    type='password'
+                                />
+                                <Form.Input
+                                    fluid
+                                    icon='lock'
+                                    iconPosition='left'
+                                    placeholder='Повторите пароль'
                                     type='password'
                                 />
 
