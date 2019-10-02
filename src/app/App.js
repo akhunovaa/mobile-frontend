@@ -9,6 +9,8 @@ import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
 import AppHeader from '../common/AppHeader';
 import AppFooter from '../common/AppFooter';
+import MobileAppHeader from "../common/mobile/MobileAppHeader";
+import MobileAppFooter from "../common/mobile/MobileAppFooter";
 
 class App extends Component {
 
@@ -71,23 +73,44 @@ class App extends Component {
     };
 
     render() {
+
+        const { width } = this.state;
+        const isMobile = width <= 500;
+
         if (this.state.loading) {
             return <LoadingIndicator/>
         }
 
-        return (
-            <div>
-                <AppHeader authenticated={this.state.authenticated}/>
-                <Switch>
-                    <Route exact path="/" component={Home}/>
-                    <Route component={NotFound}/>
-                </Switch>
-                <AppFooter authenticated={this.state.authenticated}/>
-                <Alert stack={{limit: 3}}
-                       timeout={3000}
-                       position='top-right' effect='slide' offset={65}/>
-            </div>
-        );
+        if (isMobile) {
+            return (
+                <div>
+                    <MobileAppHeader authenticated={this.state.authenticated}/>
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route component={NotFound}/>
+                    </Switch>
+                    <MobileAppFooter authenticated={this.state.authenticated}/>
+                    <Alert stack={{limit: 3}}
+                           timeout={3000}
+                           position='top-right' effect='slide' offset={65}/>
+                </div>
+            );
+        }else {
+            return (
+                <div>
+                    <AppHeader authenticated={this.state.authenticated}/>
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route component={NotFound}/>
+                    </Switch>
+                    <AppFooter authenticated={this.state.authenticated}/>
+                    <Alert stack={{limit: 3}}
+                           timeout={3000}
+                           position='top-right' effect='slide' offset={65}/>
+                </div>
+            );
+        }
+
     }
 }
 

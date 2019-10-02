@@ -1,4 +1,4 @@
 .main{
-    min-height: 500px;
-    height: 800px;
+    min-height: 800px;
+    height: fit-content;
 }

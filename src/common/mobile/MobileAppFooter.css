@@ -1,0 +1,71 @@
+#footer_container {
+    opacity: 1;
+    position: relative;
+    width: 375px;
+    height: auto;
+    left: 0px;
+    overflow: visible;
+}
+
+#footer_background {
+    opacity: 1;
+    fill: #51c83773;
+    /*stroke: rgb(112, 112, 112);*/
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+.footer_background {
+    position: absolute;
+    overflow: visible;
+    width: 375px;
+    height: 300px;
+    left: 0px;
+    top: 0px;
+}
+
+#write_button {
+    opacity: 1;
+    position: absolute;
+    width: 242.047px;
+    height: 47px;
+    left: 66.784px;
+    top: 102px;
+    overflow: visible;
+}
+
+#Path_7_A0_Path_11 {
+    opacity: 1;
+    fill: #51c83773;
+    stroke: #51c83773;
+    stroke-width: 1px;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-miterlimit: 4;
+    shape-rendering: auto;
+}
+
+#____________ {
+    opacity: 1;
+    position: absolute;
+    left: 34px;
+    top: 12px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    width: 169px;
+    white-space: nowrap;
+    line-height: 30px;
+    margin-top: -2.5px;
+    text-align: center;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgba(238,238,238,1);
+    letter-spacing: 0.2px;
+}
