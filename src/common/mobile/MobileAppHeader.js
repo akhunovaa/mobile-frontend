@@ -166,17 +166,6 @@ class MobileAppHeader extends Component {
                                     </Segment>
                                 </div>
                             </Portal>
-                            <div id="login">
-                                <svg className="Rectangle_3">
-                                    <rect id="Rectangle_3" rx="16" ry="16" x="0" y="0" width="75" height="32">
-                                    </rect>
-                                </svg>
-                                <div id="Log_In">
-                                    <a href="/login" style={{color: 'white'}}>
-                                        <span>Войти</span>
-                                    </a>
-                                </div>
-                            </div>
                         </div>
                     )}
             </div>

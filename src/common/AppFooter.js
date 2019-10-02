@@ -23,8 +23,6 @@ class AppFooter extends Component {
                                 <li><NavLink to="/feedback">ОБРАТНАЯ СВЯЗЬ</NavLink></li>
                                 <li><a href="#">КОНТАКТЫ</a></li>
                                 <NavLink style={{float: 'right'}} to="/signup">РЕГИСТРАЦИЯ</NavLink>
-                                <NavLink style={{float: 'right'}} to="/login">ВХОД</NavLink>
-
                             </ul>
                         </div>
                 )}

@@ -23,7 +23,6 @@ class AppHeader extends Component {
                             ) : (
                                 <div>
                                     <NavLink style={{float: 'right'}} to="/signup">РЕГИСТРАЦИЯ</NavLink>
-                                    <NavLink style={{float: 'right'}} to="/login">ВХОД</NavLink>
                                     <li><NavLink to="/feedback">ОБРАТНАЯ СВЯЗЬ</NavLink></li>
                                     <li><a href="#">КОНТАКТЫ</a></li>
                                 </div>
