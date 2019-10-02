@@ -1,8 +1,6 @@
 .page-not-found {
-    max-width: 500px;
-    min-height: 500px;
+    min-height: 800px;
     height: fit-content;
-    border: 1px solid #c8c8c8;
     text-align: center;
     padding-top: 170px;
 }
