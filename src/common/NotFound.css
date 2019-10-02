@@ -1,11 +1,10 @@
 .page-not-found {
     max-width: 500px;
-    margin: 0 auto;
     min-height: 500px;
     height: fit-content;
-    padding: 40px;
     border: 1px solid #c8c8c8;
     text-align: center;
+    padding-top: 170px;
 }
 
 .page-not-found .title {
@@ -21,4 +20,9 @@
 
 .go-back-btn {
     min-width: 160px;
+    background-color: #8cd87b;
+    border-color: #b6e6aa;
+    color: #5c6a57;
+    font-size: 15px;
+    font-weight: 400;
 }
