@@ -8,7 +8,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className='main'>
                 {/*<div id="main_menu">*/}
                     {/*<ul id="sub01">*/}
                         {/*<li><a href="/">ГЛАВНАЯ СТРАНИЦА </a></li>*/}
