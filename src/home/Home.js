@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Home.css';
-
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import logo from '../img/logo.jpg';
 
 class Home extends Component {
 
@@ -8,14 +9,33 @@ class Home extends Component {
 
     render() {
         return (
-            <div className='main'>
-                {/*<div id="main_menu">*/}
-                    {/*<ul id="sub01">*/}
-                        {/*<li><a href="/">ГЛАВНАЯ СТРАНИЦА </a></li>*/}
-                        {/*<li><a href="mailto:admin@botmasterzzz.com">ОБРАТНАЯ СВЯЗЬ</a></li>*/}
-                        {/*<li><a href="tg://resolve?domain=botmasterzzzrobot">ТЕЛЕГРАММ БОТ</a></li>*/}
-                    {/*</ul>*/}
-                {/*</div>*/}
+            <div className={"main"}>
+                <Grid className={"login-form"} textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+                    <Grid.Column className="grid-column">
+                        <Header as='h2' color='teal' textAlign='center'>
+                            <Image src={logo} /> Добро пожаловать
+                        </Header>
+                        <Form size='large'>
+                            <Segment stacked>
+                                <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail или login' />
+                                <Form.Input
+                                    fluid
+                                    icon='lock'
+                                    iconPosition='left'
+                                    placeholder='Пароль'
+                                    type='password'
+                                />
+
+                                <Button color='teal' fluid size='large'>
+                                    Войти
+                                </Button>
+                            </Segment>
+                        </Form>
+                        <Message>
+                            Нет аккаунта? <a href='#'>Зарегистрироваться!</a>
+                        </Message>
+                    </Grid.Column>
+                </Grid>
             </div>
         )
     }

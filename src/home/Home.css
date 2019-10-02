@@ -1,4 +1,22 @@
 .main{
-    min-height: 800px;
-    height: fit-content;
+
+}
+
+.grid-column{
+    max-width: 550px;
+}
+
+.ui.grid.login-form{
+
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 500px) {
+    .grid-column{
+        max-width: 340px;
+    }
 }
