@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 import NotFound from '../common/NotFound';
 import Home from '../home/Home';
 import SignUp from '../home/SignUp';
+import Login from '../home/Login';
 import Feedback from '../home/Feedback';
 import Contacts from '../home/Contacts';
 import LoadingIndicator from '../common/LoadingIndicator';
@@ -62,7 +63,7 @@ class App extends Component {
 
     componentDidMount() {
         //loadReCaptcha();
-        //this.loadCurrentlyLoggedInUser();
+        this.loadCurrentlyLoggedInUser();
     }
 
     componentWillMount() {
@@ -92,6 +93,7 @@ class App extends Component {
                     <MobileAppHeader authenticated={this.state.authenticated}/>
                     <Switch>
                         <Route exact path="/" component={Home}/>
+                        <Route exact path="/login" component={Login}/>
                         <Route exact path="/signup" component={SignUp}/>
                         <Route exact path="/feedback" component={Feedback}/>
                         <Route exact path="/contacts" component={Contacts}/>
@@ -109,6 +111,7 @@ class App extends Component {
                     <AppHeader authenticated={this.state.authenticated}/>
                     <Switch>
                         <Route exact path="/" component={Home}/>
+                        <Route exact path="/login" component={Login}/>
                         <Route exact path="/signup" component={SignUp}/>
                         <Route exact path="/feedback" component={Feedback}/>
                         <Route exact path="/contacts" component={Contacts}/>
