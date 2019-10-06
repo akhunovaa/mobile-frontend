@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {Header, Grid} from "semantic-ui-react";
+
 
 class DashBoard extends Component {
 
@@ -11,7 +13,14 @@ class DashBoard extends Component {
 
         return (
             <div className={"main"}>
-                <p>Hello, {this.props.currentUser.name}</p>
+                <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+                    <Grid.Column className="grid-column">
+                        <Header as='h2' color='teal' textAlign='center'>
+                           Добро пожаловать {this.props.currentUser.name}
+                        </Header>
+                    </Grid.Column>
+                </Grid>
+
             </div>
         )
     }
