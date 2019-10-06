@@ -69,12 +69,6 @@ class SignUpForm extends Component {
         });
     }
 
-    handleOnPhoneChange(value) {
-        this.setState({
-            phone: value
-        });
-    }
-
     handleSubmit(event) {
         event.preventDefault();
 
@@ -101,8 +95,8 @@ class SignUpForm extends Component {
                     </Header>
                     <Form onSubmit={this.handleSubmit} size='large'>
                         <Segment stacked>
-                            <Form.Input fluid icon='user' iconPosition='left' placeholder='Login' name="login" required/>
-                            <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail' name="email" required/>
+                            <Form.Input fluid icon='user' iconPosition='left' placeholder='Login' name="login" onChange={this.handleInputChange} required/>
+                            <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail' name="email" onChange={this.handleInputChange} required/>
                             <Form.Input name="password"
                                 fluid
                                 icon='lock'
@@ -110,6 +104,7 @@ class SignUpForm extends Component {
                                 placeholder='Пароль'
                                 type='password'
                                 required
+                                onChange={this.handleInputChange}
                             />
                             <ReCaptcha
                                 ref={(el) => {this.captcha = el;}}
