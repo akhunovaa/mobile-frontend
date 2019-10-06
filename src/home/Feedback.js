@@ -91,7 +91,6 @@ class Feedback extends Component {
         const target = event.target;
         const inputName = target.name;
         const inputValue = target.value;
-
         this.setState({
             [inputName] : inputValue
         });
@@ -100,12 +99,12 @@ class Feedback extends Component {
     render() {
         return (
             <div className={"main"}>
-                <Grid className={"login-form"} textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+                <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                     <Grid.Column className="grid-column">
                         <Header as='h2' color='teal' textAlign='center'>
                             <Image src={logo} /> Форма обратной связи
                         </Header>
-                        <Form size='large'>
+                        <Form onSubmit={this.handleSubmit} size='large'>
                             <Segment stacked>
                                 <Form.Input fluid icon='user' iconPosition='left' placeholder='Имя' name="name" onChange={this.handleInputChange} required />
                                 <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail' name="email" onChange={this.handleInputChange} required />
