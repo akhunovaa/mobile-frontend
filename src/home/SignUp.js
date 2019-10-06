@@ -36,7 +36,6 @@ class SignUpForm extends Component {
             captchaToken: ''
         };
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleOnPhoneChange = this.handleOnPhoneChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
         this.verifyCallback = this.verifyCallback.bind(this);
