@@ -104,7 +104,7 @@ class App extends Component {
                         <PrivateRoute path="/dashboard" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={DashBoard}/>
                         <Route component={NotFound}/>
                     </Switch>
-                    <MobileAppFooter authenticated={this.state.authenticated}/>
+                    <MobileAppFooter authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Alert stack={{limit: 3}}
                            timeout={3000}
                            position='top-right' effect='slide' offset={65}/>
@@ -125,7 +125,7 @@ class App extends Component {
                         <PrivateRoute path="/dashboard" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={DashBoard}/>
                         <Route component={NotFound}/>
                     </Switch>
-                    <AppFooter authenticated={this.state.authenticated}/>
+                    <AppFooter authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Alert stack={{limit: 3}}
                            timeout={3000}
                            position='top-right' effect='slide' offset={65}/>
