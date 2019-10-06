@@ -5,10 +5,6 @@ import {Redirect} from "react-router";
 
 class Home extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         console.log("AUTH:")
         console.log(this.props.authenticated)

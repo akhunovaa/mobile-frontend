@@ -47,9 +47,10 @@ class App extends Component {
                     authenticated: true,
                     loading: false
                 });
-                console.log("RESPONSE:" + response)
+                console.log("RESPONSE:" + response.name)
                 console.log("POSLE:" + this.state.authenticated)
             }).catch(error => {
+            console.log("POSLE:" + this.state.authenticated)
             this.setState({
                 loading: false
             });
@@ -96,7 +97,8 @@ class App extends Component {
                 <div>
                     <MobileAppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Switch>
-                        <Route path="/" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={Home}/>
+                        <Route path="/"
+                               render={(props) => <Home authenticated={this.state.authenticated} currentUser={this.state.currentUser} {...props} />}/>
                         <Route path="/login"
                                render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
                         <Route path="/signup"
@@ -117,7 +119,8 @@ class App extends Component {
                 <div>
                     <AppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Switch>
-                        <Route path="/" authenticated={this.state.authenticated} component={Home}/>
+                        <Route path="/"
+                               render={(props) => <Home authenticated={this.state.authenticated} currentUser={this.state.currentUser} {...props} />}/>
                         <Route path="/login"
                                render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
                         <Route path="/signup"
