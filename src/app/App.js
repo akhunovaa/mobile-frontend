@@ -90,11 +90,13 @@ class App extends Component {
         if (isMobile) {
             return (
                 <div>
-                    <MobileAppHeader authenticated={this.state.authenticated}/>
+                    <MobileAppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Switch>
-                        <Route exact path="/" component={Home}/>
-                        <Route exact path="/login" component={Login}/>
-                        <Route exact path="/signup" component={SignUp}/>
+                        <Route exact path="/" authenticated={this.state.authenticated}  component={Home}/>
+                        <Route path="/login"
+                               render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
+                        <Route path="/signup"
+                               render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}/>
                         <Route exact path="/feedback" component={Feedback}/>
                         <Route exact path="/contacts" component={Contacts}/>
                         <Route component={NotFound}/>
@@ -108,11 +110,13 @@ class App extends Component {
         }else {
             return (
                 <div>
-                    <AppHeader authenticated={this.state.authenticated}/>
+                    <AppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Switch>
-                        <Route exact path="/" component={Home}/>
-                        <Route exact path="/login" component={Login}/>
-                        <Route exact path="/signup" component={SignUp}/>
+                        <Route exact path="/" authenticated={this.state.authenticated} component={Home}/>
+                        <Route path="/login"
+                               render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
+                        <Route path="/signup"
+                               render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}/>
                         <Route exact path="/feedback" component={Feedback}/>
                         <Route exact path="/contacts" component={Contacts}/>
                         <Route component={NotFound}/>
