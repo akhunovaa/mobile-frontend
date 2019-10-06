@@ -124,7 +124,7 @@ export function signup(signupRequest) {
 
 export function feedback(feedbackRequest) {
     return request({
-        url: API_BASE_URL + "/admin/feedback",
+        url: API_BASE_URL + "/mobile/feedback",
         method: 'POST',
         body: JSON.stringify(feedbackRequest)
     });
