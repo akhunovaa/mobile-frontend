@@ -13,10 +13,12 @@ import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 import './App.css';
 import AppHeader from '../common/AppHeader';
 import AppFooter from '../common/AppFooter';
+import PrivateRoute from '../common/PrivateRoute';
 import MobileAppHeader from "../common/mobile/MobileAppHeader";
 import MobileAppFooter from "../common/mobile/MobileAppFooter";
 import {getCurrentUser} from '../util/APIUtils';
 import {ACCESS_TOKEN} from '../constants';
+import DashBoard from "../dashboard/DashBoard";
 
 class App extends Component {
 
@@ -92,13 +94,14 @@ class App extends Component {
                 <div>
                     <MobileAppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Switch>
-                        <Route path="/" authenticated={this.state.authenticated} component={Home}/>
+                        <Route path="/" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={Home}/>
                         <Route path="/login"
                                render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
                         <Route path="/signup"
                                render={(props) => <SignUp authenticated={this.state.authenticated} {...props} />}/>
                         <Route path="/feedback" component={Feedback}/>
                         <Route path="/contacts" component={Contacts}/>
+                        <PrivateRoute path="/dashboard" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={DashBoard}/>
                         <Route component={NotFound}/>
                     </Switch>
                     <MobileAppFooter authenticated={this.state.authenticated}/>
@@ -119,6 +122,7 @@ class App extends Component {
                                render={(props) => <SignUp authenticated={this.state.authenticated} {...props} />}/>
                         <Route path="/feedback" component={Feedback}/>
                         <Route path="/contacts" component={Contacts}/>
+                        <PrivateRoute path="/dashboard" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={DashBoard}/>
                         <Route component={NotFound}/>
                     </Switch>
                     <AppFooter authenticated={this.state.authenticated}/>
