@@ -18,6 +18,7 @@ import MobileAppHeader from "../common/mobile/MobileAppHeader";
 import MobileAppFooter from "../common/mobile/MobileAppFooter";
 import {getCurrentUser} from '../util/APIUtils';
 import {ACCESS_TOKEN} from '../constants';
+import {loadReCaptcha} from 'react-recaptcha-google'
 import DashBoard from "../dashboard/DashBoard";
 
 class App extends Component {
@@ -63,7 +64,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        //loadReCaptcha();
+        loadReCaptcha();
         this.loadCurrentlyLoggedInUser();
     }
 
