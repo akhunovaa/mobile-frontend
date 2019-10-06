@@ -39,7 +39,7 @@ class App extends Component {
         this.setState({
             loading: true
         });
-
+        console.log("DO:" + this.state.authenticated)
         getCurrentUser()
             .then(response => {
                 this.setState({
@@ -47,6 +47,8 @@ class App extends Component {
                     authenticated: true,
                     loading: false
                 });
+                console.log("RESPONSE:" + response)
+                console.log("POSLE:" + this.state.authenticated)
             }).catch(error => {
             this.setState({
                 loading: false

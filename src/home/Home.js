@@ -5,23 +5,14 @@ import {Redirect} from "react-router";
 
 class Home extends Component {
 
-    state = {
-        authenticated: false
-    };
-
     constructor(props) {
-
         super(props);
-
-        this.state = {
-            authenticated: this.props.authenticated
-        };
     }
 
     render() {
         console.log("AUTH:")
-        console.log(this.state.authenticated)
-        if(this.state.authenticated) {
+        console.log(this.props.authenticated)
+        if(this.props.authenticated) {
             return <Redirect
                 to={{
                     pathname: "/dashboard",
@@ -29,7 +20,7 @@ class Home extends Component {
                 }}/>;
         }else {
             console.log("LOGIN:")
-            console.log(this.state.authenticated)
+            console.log(this.props.authenticated)
             return (
                 <div className={"main"}>
                     <LoginForm {...this.props} />
