@@ -93,8 +93,9 @@ class App extends Component {
                 <div>
                     <MobileAppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Switch>
-                        <Route exact path="/"
-                               render={(props) => <Home authenticated={this.state.authenticated} currentUser={this.state.currentUser} {...props} />}/>
+                        {/*<Route exact path="/"*/}
+                               {/*render={(props) => <Home authenticated={this.state.authenticated} currentUser={this.state.currentUser} {...props} />}/>      */}
+                        <PrivateRoute exact path="/" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={Home}/>
                         <Route exact path="/login"
                                render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
                         <Route exact path="/signup"
@@ -115,8 +116,9 @@ class App extends Component {
                 <div>
                     <AppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Switch>
-                        <Route exact path="/"
-                               render={(props) => <Home authenticated={this.state.authenticated} currentUser={this.state.currentUser} {...props} />}/>
+                        {/*<Route exact path="/"*/}
+                        {/*render={(props) => <Home authenticated={this.state.authenticated} currentUser={this.state.currentUser} {...props} />}/>      */}
+                        <PrivateRoute exact path="/" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={Home}/>
                         <Route exact path="/login"
                                render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
                         <Route exact path="/signup"

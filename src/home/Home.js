@@ -26,7 +26,7 @@ class Home extends Component {
                 <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                     <Grid.Column className="grid-column">
                         <Header as='h2' color='teal' textAlign='center'>
-                            Добро пожаловать
+                            Добро пожаловать {this.state.currentUser.name}
                         </Header>
                     </Grid.Column>
                 </Grid>
