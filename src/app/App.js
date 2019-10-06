@@ -92,13 +92,13 @@ class App extends Component {
                 <div>
                     <MobileAppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Switch>
-                        <Route exact path="/" authenticated={this.state.authenticated}  component={Home}/>
+                        <Route path="/" authenticated={this.state.authenticated} component={Home}/>
                         <Route path="/login"
                                render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
                         <Route path="/signup"
                                render={(props) => <SignUp authenticated={this.state.authenticated} {...props} />}/>
-                        <Route exact path="/feedback" component={Feedback}/>
-                        <Route exact path="/contacts" component={Contacts}/>
+                        <Route path="/feedback" component={Feedback}/>
+                        <Route path="/contacts" component={Contacts}/>
                         <Route component={NotFound}/>
                     </Switch>
                     <MobileAppFooter authenticated={this.state.authenticated}/>
@@ -112,13 +112,13 @@ class App extends Component {
                 <div>
                     <AppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Switch>
-                        <Route exact path="/" authenticated={this.state.authenticated} component={Home}/>
+                        <Route path="/" authenticated={this.state.authenticated} component={Home}/>
                         <Route path="/login"
                                render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
                         <Route path="/signup"
                                render={(props) => <SignUp authenticated={this.state.authenticated} {...props} />}/>
-                        <Route exact path="/feedback" component={Feedback}/>
-                        <Route exact path="/contacts" component={Contacts}/>
+                        <Route path="/feedback" component={Feedback}/>
+                        <Route path="/contacts" component={Contacts}/>
                         <Route component={NotFound}/>
                     </Switch>
                     <AppFooter authenticated={this.state.authenticated}/>

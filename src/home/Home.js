@@ -7,19 +7,19 @@ class Home extends Component {
     state = {};
 
     render() {
-        if(this.props.authenticated) {
-            return  <div className={"main"}>
 
-            </div>;
-        }else {
-            return (
-                <div className={"main"}>
-                    <LoginForm {...this.props} />
-                </div>
-            )
+        if(!this.props.authenticated) {
+            return <div className={"main"}>
+                <LoginForm {...this.props} />
+            </div>
         }
 
-    }
-}
+        return (
+                <div className={"main"}>
+                   <p>HELLO USER</p>
+                </div>
+        )
+                }
+        }
 
 export default Home;
