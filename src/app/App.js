@@ -93,15 +93,15 @@ class App extends Component {
                 <div>
                     <MobileAppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Switch>
-                        <Route path="/"
+                        <Route exact path="/"
                                render={(props) => <Home authenticated={this.state.authenticated} currentUser={this.state.currentUser} {...props} />}/>
-                        <Route path="/login"
+                        <Route exact path="/login"
                                render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
-                        <Route path="/signup"
+                        <Route exact path="/signup"
                                render={(props) => <SignUp authenticated={this.state.authenticated} {...props} />}/>
-                        <Route path="/feedback" component={Feedback}/>
-                        <Route path="/contacts" component={Contacts}/>
-                        <PrivateRoute path="/dashboard" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={DashBoard}/>
+                        <Route exact path="/feedback" component={Feedback}/>
+                        <Route exact path="/contacts" component={Contacts}/>
+                        <PrivateRoute exact path="/dashboard" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={DashBoard}/>
                         <Route component={NotFound}/>
                     </Switch>
                     <MobileAppFooter authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
@@ -115,15 +115,15 @@ class App extends Component {
                 <div>
                     <AppHeader authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
                     <Switch>
-                        <Route path="/"
+                        <Route exact path="/"
                                render={(props) => <Home authenticated={this.state.authenticated} currentUser={this.state.currentUser} {...props} />}/>
-                        <Route path="/login"
+                        <Route exact path="/login"
                                render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
-                        <Route path="/signup"
+                        <Route exact path="/signup"
                                render={(props) => <SignUp authenticated={this.state.authenticated} {...props} />}/>
-                        <Route path="/feedback" component={Feedback}/>
-                        <Route path="/contacts" component={Contacts}/>
-                        <PrivateRoute path="/dashboard" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={DashBoard}/>
+                        <Route exact path="/feedback" component={Feedback}/>
+                        <Route exact path="/contacts" component={Contacts}/>
+                        <PrivateRoute exact path="/dashboard" authenticated={this.state.authenticated} currentUser={this.state.currentUser} component={DashBoard}/>
                         <Route component={NotFound}/>
                     </Switch>
                     <AppFooter authenticated={this.state.authenticated} onLogout={this.handleLogout}/>
