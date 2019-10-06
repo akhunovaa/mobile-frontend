@@ -8,21 +8,25 @@ class Home extends Component {
     state = {};
 
     render() {
-
+        console.log("AUTH:")
+        console.log(this.props.authenticated)
         if(this.props.authenticated) {
             return <Redirect
                 to={{
                     pathname: "/dashboard",
                     state: { from: this.props.location }
                 }}/>;
-        }
-
-        return (
+        }else {
+            console.log("LOGIN:")
+            console.log(this.props.authenticated)
+            return (
                 <div className={"main"}>
                     <LoginForm {...this.props} />
                 </div>
-        )
-                }
+            )
         }
+    }
+}
+
 
 export default Home;
