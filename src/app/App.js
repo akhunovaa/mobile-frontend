@@ -96,7 +96,7 @@ class App extends Component {
                         <Route path="/login"
                                render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
                         <Route path="/signup"
-                               render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}/>
+                               render={(props) => <SignUp authenticated={this.state.authenticated} {...props} />}/>
                         <Route exact path="/feedback" component={Feedback}/>
                         <Route exact path="/contacts" component={Contacts}/>
                         <Route component={NotFound}/>
@@ -116,7 +116,7 @@ class App extends Component {
                         <Route path="/login"
                                render={(props) => <Login authenticated={this.state.authenticated} {...props} />}/>
                         <Route path="/signup"
-                               render={(props) => <Signup authenticated={this.state.authenticated} {...props} />}/>
+                               render={(props) => <SignUp authenticated={this.state.authenticated} {...props} />}/>
                         <Route exact path="/feedback" component={Feedback}/>
                         <Route exact path="/contacts" component={Contacts}/>
                         <Route component={NotFound}/>
