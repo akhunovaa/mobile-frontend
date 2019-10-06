@@ -14,6 +14,8 @@ import AppHeader from '../common/AppHeader';
 import AppFooter from '../common/AppFooter';
 import MobileAppHeader from "../common/mobile/MobileAppHeader";
 import MobileAppFooter from "../common/mobile/MobileAppFooter";
+import {getCurrentUser} from '../util/APIUtils';
+import {ACCESS_TOKEN} from '../constants';
 
 class App extends Component {
 
@@ -31,26 +33,26 @@ class App extends Component {
     }
 
     loadCurrentlyLoggedInUser() {
-        // this.setState({
-        //     loading: true
-        // });
+        this.setState({
+            loading: true
+        });
 
-        // getCurrentUser()
-        //     .then(response => {
-        //         this.setState({
-        //             currentUser: response,
-        //             authenticated: true,
-        //             loading: false
-        //         });
-        //     }).catch(error => {
-        //     this.setState({
-        //         loading: false
-        //     });
-        // });
+        getCurrentUser()
+            .then(response => {
+                this.setState({
+                    currentUser: response,
+                    authenticated: true,
+                    loading: false
+                });
+            }).catch(error => {
+            this.setState({
+                loading: false
+            });
+        });
     }
 
     handleLogout() {
-        //localStorage.removeItem(ACCESS_TOKEN);
+        localStorage.removeItem(ACCESS_TOKEN);
         this.setState({
             authenticated: false,
             currentUser: null
@@ -60,7 +62,7 @@ class App extends Component {
 
     componentDidMount() {
         //loadReCaptcha();
-        this.loadCurrentlyLoggedInUser();
+        //this.loadCurrentlyLoggedInUser();
     }
 
     componentWillMount() {

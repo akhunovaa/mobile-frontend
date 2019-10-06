@@ -1,43 +1,24 @@
 import React, {Component} from 'react';
 import './Home.css';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import logo from '../img/logo.jpg';
+import LoginForm from '../home/LoginForm';
 
 class Home extends Component {
 
     state = {};
 
     render() {
-        return (
-            <div className={"main"}>
-                <Grid className={"login-form"} textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-                    <Grid.Column className="grid-column">
-                        <Header as='h2' color='teal' textAlign='center'>
-                            <Image src={logo} /> Добро пожаловать
-                        </Header>
-                        <Form size='large'>
-                            <Segment stacked>
-                                <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail или login' />
-                                <Form.Input
-                                    fluid
-                                    icon='lock'
-                                    iconPosition='left'
-                                    placeholder='Пароль'
-                                    type='password'
-                                />
+        if(this.props.authenticated) {
+            return  <div className={"main"}>
 
-                                <Button color='teal' fluid size='large'>
-                                    Войти
-                                </Button>
-                            </Segment>
-                        </Form>
-                        <Message>
-                            Нет аккаунта? <a href='/signup'>Зарегистрироваться!</a>
-                        </Message>
-                    </Grid.Column>
-                </Grid>
-            </div>
-        )
+            </div>;
+        }else {
+            return (
+                <div className={"main"}>
+                    <LoginForm {...this.props} />
+                </div>
+            )
+        }
+
     }
 }
 
