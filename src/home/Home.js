@@ -89,7 +89,7 @@ class Home extends Component {
                                         <Table.Cell>-73</Table.Cell>
                                         <Table.Cell>RU</Table.Cell>
                                         <Table.Cell>WPA2(PSK/AES/AES)</Table.Cell>
-                                        <Table.Cell>2019-10-07 22:22:05.620860</Table.Cell>
+                                        <Table.Cell>2019-10-07 22:22:05</Table.Cell>
                                     </Table.Row>
                                 </Table.Body>
 
