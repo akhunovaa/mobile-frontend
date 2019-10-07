@@ -20,6 +20,15 @@
      margin-right: initial;
 }
 
+.tools-header {
+    font-weight: 700;
+    font-size: 1.28571429rem;
+    display: grid;
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
 /*
   ##Device = Most of the Smartphones Mobiles (Portrait)
   ##Screen = B/w 320px to 479px
