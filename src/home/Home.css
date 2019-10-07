@@ -9,6 +9,16 @@
 .ui.grid.login-form{
 
 }
+.ui.grid.login-form{
+
+}
+
+.ui.grid {
+     margin-top: initial;
+     margin-bottom: initial;
+     margin-left: initial;
+     margin-right: initial;
+}
 
 /*
   ##Device = Most of the Smartphones Mobiles (Portrait)
