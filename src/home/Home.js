@@ -22,7 +22,7 @@ class Home extends Component {
                         </Header.Content>
                     </Header>
                 </div>
-                <Grid style={{ height: '130vh' }}>
+                <Grid style={{ height: '140vh' }}>
                     <Grid.Column width={4}>
                         <Menu fluid vertical tabular>
                             <Menu.Item
