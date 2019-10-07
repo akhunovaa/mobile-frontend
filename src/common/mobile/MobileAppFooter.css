@@ -1,7 +1,7 @@
 #footer_container {
     opacity: 1;
     position: relative;
-    width: 375px;
+    width: 500px;
     height: auto;
     left: 0px;
     overflow: visible;
@@ -21,7 +21,7 @@
 .footer_background {
     position: absolute;
     overflow: visible;
-    width: 375px;
+    width: 500px;
     height: 300px;
     left: 0px;
     top: 0px;

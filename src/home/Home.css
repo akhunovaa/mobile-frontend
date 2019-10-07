@@ -17,6 +17,6 @@
 
 @media (min-width: 320px) and (max-width: 500px) {
     .grid-column{
-        max-width: 340px;
+        max-width: 360px;
     }
 }

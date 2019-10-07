@@ -26,7 +26,7 @@ class MobileAppHeader extends Component {
         const { open } = this.state;
         return (
             <div id="mobile_header_container">
-                <svg className="mobile_header_body" viewBox="0 0 375 95">
+                <svg className="mobile_header_body" viewBox="0 0 500 95">
                     <path id="mobile_header_body" d="M 0 0 L 375 0 L 375 95 L 0 95 L 0 0 Z">
                     </path>
                 </svg>
