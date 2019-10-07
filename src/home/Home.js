@@ -22,7 +22,7 @@ class Home extends Component {
                         </Header.Content>
                     </Header>
                 </div>
-                <Grid style={{ height: '100vh' }}>
+                <Grid style={{ height: '130vh' }}>
                     <Grid.Column width={4}>
                         <Menu fluid vertical tabular>
                             <Menu.Item
@@ -102,8 +102,6 @@ class Home extends Component {
                                                 </Menu.Item>
                                                 <Menu.Item as='a'>1</Menu.Item>
                                                 <Menu.Item as='a'>2</Menu.Item>
-                                                <Menu.Item as='a'>3</Menu.Item>
-                                                <Menu.Item as='a'>4</Menu.Item>
                                                 <Menu.Item as='a' icon>
                                                     <Icon name='chevron right' />
                                                 </Menu.Item>
