@@ -19,7 +19,8 @@ class Home extends Component {
             deviceInfoModalClose: true,
             deviceDeleteModalClose: true,
             targetDeviceId: '',
-            targetDevice: []
+            targetDevice: [],
+            targetDeviceName: ''
         }
         ;
 
@@ -46,7 +47,8 @@ class Home extends Component {
         this.state.dataList.map((i) => {
             if (i.device_id && i.device_id == deviceId) {
                 this.setState({
-                    targetDevice: i.wifi_data
+                    targetDevice: i.wifi_data,
+                    targetDeviceName: i.model_name
                 });
             }
         });
@@ -200,7 +202,7 @@ class Home extends Component {
 
                 <Modal open={this.state.deviceInfoModal} onClose={this.closeDeviceInfoModal} dimmer="blurring"
                        size="tiny" className="device-modal-conf">
-                    <Modal.Header className="modal-header">Информация о полученных данных с устройства</Modal.Header>
+                    <Modal.Header className="modal-header">{this.state.targetDeviceName}: информация об устройстве</Modal.Header>
                     <Modal.Content className="modal-content">
                         <Table celled>
                             <Table.Header>
