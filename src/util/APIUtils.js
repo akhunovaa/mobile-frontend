@@ -133,6 +133,7 @@ export function feedback(feedbackRequest) {
 export function dataListGet() {
     return requestGet({
         url: API_BASE_URL + "/mobile/list",
+        //url: "http://localhost:8016" + "/mobile/list",
         method: 'GET'
     });
 }

@@ -29,6 +29,25 @@
     padding-right: 12px;
 }
 
+
+.device-cell-header {
+    width: 100%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.device-cell-update-body {
+    display: inline-flex;
+    overflow: overlay;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    min-height: 40px;
+    align-items: center;
+}
+
 /*
   ##Device = Most of the Smartphones Mobiles (Portrait)
   ##Screen = B/w 320px to 479px

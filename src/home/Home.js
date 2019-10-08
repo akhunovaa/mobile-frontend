@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './Home.css';
-import {Header, Grid, Table, Segment, Menu, Tab, Icon} from "semantic-ui-react";
-import LoadingIndicator from "../app/App";
+import {Header, Grid, Button, Segment, Menu, Tab, Icon} from "semantic-ui-react";
 import {dataListGet} from "../util/APIUtils";
 import Alert from 'react-s-alert';
 
@@ -12,7 +11,6 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            loading: false,
             dataList: []
         };
 
@@ -20,19 +18,15 @@ class Home extends Component {
 
     componentDidMount() {
         this._isMounted = true;
-        if (!this.state.response) return;
-        this.setState({
-            loading: true
-        });
-        console.log("data get")
+        console.log(this.state.dataList);
+        if (this.state.dataList.length > 0) return;
         dataListGet()
             .then(response => {
-                console.log(response.response)
                 if (this._isMounted) {
                     this.setState({
-                        dataList : response.response,
-                        loading: false
+                        dataList : response.response
                     });
+                    console.log(response.response);
                 }
             }).catch(error => {
             this.setState({
@@ -42,81 +36,40 @@ class Home extends Component {
         });
     }
 
-    UNSAFE_componentWillMount() {
+    componentWillUnmount() {
         this._isMounted = false;
     }
 
     render() {
-        if (this.state.loading) {
-            return <LoadingIndicator/>
-        }
-        const panes = ([
-            { menuItem: 'Nokia', render: () => <Tab.Pane>Tab 1 Content</Tab.Pane> },
-            { menuItem: 'Motorolla', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
-            { menuItem: 'iPhone', render: () => <Tab.Pane>
-                    <Table celled>
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.HeaderCell>SSID</Table.HeaderCell>
-                                <Table.HeaderCell>BSSID</Table.HeaderCell>
-                                <Table.HeaderCell>CHANNEL</Table.HeaderCell>
-                                <Table.HeaderCell>RSSI</Table.HeaderCell>
-                                <Table.HeaderCell>CC</Table.HeaderCell>
-                                <Table.HeaderCell>SECURITY</Table.HeaderCell>
-                                <Table.HeaderCell>CREATED TIME</Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
 
-                        <Table.Body>
-                            <Table.Row>
-                                <Table.Cell>Sberbank-Guest</Table.Cell>
-                                <Table.Cell>34:a8:4e:1f:19:7f</Table.Cell>
-                                <Table.Cell>64</Table.Cell>
-                                <Table.Cell>-81</Table.Cell>
-                                <Table.Cell>RU</Table.Cell>
-                                <Table.Cell>NONE</Table.Cell>
-                                <Table.Cell>2019-10-07 13:26:33</Table.Cell>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Cell>SBRF_HighQuality</Table.Cell>
-                                <Table.Cell>34:a8:4e:81:57:7c</Table.Cell>
-                                <Table.Cell>44</Table.Cell>
-                                <Table.Cell>-61</Table.Cell>
-                                <Table.Cell>RU</Table.Cell>
-                                <Table.Cell>NONE</Table.Cell>
-                                <Table.Cell>2019-10-07 22:22:05</Table.Cell>
-                            </Table.Row>
-                            <Table.Row>
-                                <Table.Cell>Onlime_46</Table.Cell>
-                                <Table.Cell>78:96:82:76:35:85</Table.Cell>
-                                <Table.Cell>11</Table.Cell>
-                                <Table.Cell>-73</Table.Cell>
-                                <Table.Cell>RU</Table.Cell>
-                                <Table.Cell>WPA2(PSK/AES/AES)</Table.Cell>
-                                <Table.Cell>2019-10-07 22:22:05</Table.Cell>
-                            </Table.Row>
-                        </Table.Body>
 
-                        <Table.Footer>
-                            <Table.Row>
-                                <Table.HeaderCell colSpan='7'>
-                                    <Menu floated='right' pagination>
-                                        <Menu.Item as='a' icon>
-                                            <Icon name='chevron left' />
-                                        </Menu.Item>
-                                        <Menu.Item as='a'>1</Menu.Item>
-                                        <Menu.Item as='a'>2</Menu.Item>
-                                        <Menu.Item as='a' icon>
-                                            <Icon name='chevron right' />
-                                        </Menu.Item>
-                                    </Menu>
-                                </Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Footer>
-                    </Table>
-               </Tab.Pane> },
-            { menuItem: 'Samsung', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> }
-        ]);
+        const Devices = ({items}) => (
+            <>
+                {
+                    items.map(item => (
+                        <Grid.Column key={item.device_id}>
+                            <Segment>
+                                <div className='device-cell-container'>
+                                    <div className='device-cell-header'>
+                                        <Header sub floated='left'>
+                                            <Header.Content>
+                                                {item.model_name}
+                                            </Header.Content>
+                                        </Header>
+                                    </div>
+                                    <div className='device-cell-update-body'>
+                                        {item.os_version ? item.os_version : <span>&emsp;</span>}
+                                        <br/>
+                                        {item.ip_address ? item.ip_address : <span>&emsp;</span>}
+                                        <br/>
+                                        {item.mac_address ? item.mac_address : <span>&emsp;</span>}
+                                    </div>
+                                </div>
+                            </Segment>
+                        </Grid.Column>
+                    ))}
+            </>
+        );
 
         return (
             <div className={"main"}>
@@ -129,7 +82,16 @@ class Home extends Component {
                     </Header>
                 </div>
                 <div style={{ height: '140vh' }}>
-                    <Tab menu={{ fluid: true, vertical: true, tabular: true }} panes={panes} />
+                    {
+                        this.state.dataList.length === 0 ? (
+                            <label>Данные отстутствуют</label>
+                        ) : (
+                            <Grid columns='3' stackable>
+                                <Devices items={this.state.dataList}/>
+                            </Grid>
+                        )
+                    }
+
                 </div>
             </div>
         )
