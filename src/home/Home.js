@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Home.css';
-import {Header, Grid, Button, Segment, Modal, Container, Table} from "semantic-ui-react";
+import {Button, Container, Grid, Header, Modal, Segment, Table} from "semantic-ui-react";
 import {dataListGet} from "../util/APIUtils";
 import Alert from 'react-s-alert';
 
@@ -19,7 +19,7 @@ class Home extends Component {
             deviceInfoModalClose: true,
             deviceDeleteModalClose: true,
             targetDeviceId: '',
-            targetDevice: null
+            targetDevice: []
         }
         ;
 
@@ -43,7 +43,18 @@ class Home extends Component {
         event.preventDefault();
         const data = new FormData(event.target);
         const deviceId = data.get('deviceId');
-        this.setState({deviceInfoModalClose: false, deviceInfoModal: true, targetDeviceId: deviceId});
+        this.state.dataList.map((i) => {
+            if (i.device_id && i.device_id == deviceId) {
+                this.setState({
+                    targetDevice: i.wifi_data
+                });
+            }
+        });
+        this.setState({
+            deviceInfoModalClose: false,
+            deviceInfoModal: true,
+            targetDeviceId: deviceId,
+        });
     }
 
     showDeviceDeleteModal(event) {
@@ -147,6 +158,24 @@ class Home extends Component {
             </>
         );
 
+        const Rows = ({items}) => (
+            <>
+                {
+                    items.map(item => (
+                        <Table.Row textAlign={'center'} key={item.id}>
+                            <Table.Cell>{item.ssid}</Table.Cell>
+                            <Table.Cell>{item.bssid}</Table.Cell>
+                            <Table.Cell>{item.channel}</Table.Cell>
+                            <Table.Cell>{item.rssi}</Table.Cell>
+                            <Table.Cell>{item.cc}</Table.Cell>
+                            <Table.Cell>{item.security}</Table.Cell>
+                            <Table.Cell>{new Date(item.created).toLocaleString()}</Table.Cell>
+                        </Table.Row>
+                    ))
+                }
+            </>
+        );
+
         return (
             <div className={"main"}>
                 <div className="tools-header">
@@ -175,7 +204,7 @@ class Home extends Component {
                     <Modal.Content className="modal-content">
                         <Table celled>
                             <Table.Header>
-                                <Table.Row>
+                                <Table.Row textAlign={'center'} >
                                     <Table.HeaderCell>SSID</Table.HeaderCell>
                                     <Table.HeaderCell>BSSID</Table.HeaderCell>
                                     <Table.HeaderCell>CHANNEL</Table.HeaderCell>
@@ -187,33 +216,7 @@ class Home extends Component {
                             </Table.Header>
 
                             <Table.Body>
-                                <Table.Row>
-                                    <Table.Cell>Sberbank-Guest</Table.Cell>
-                                    <Table.Cell>34:a8:4e:1f:19:7f</Table.Cell>
-                                    <Table.Cell>64</Table.Cell>
-                                    <Table.Cell>-81</Table.Cell>
-                                    <Table.Cell>RU</Table.Cell>
-                                    <Table.Cell>NONE</Table.Cell>
-                                    <Table.Cell>2019-10-07 13:26:33</Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
-                                    <Table.Cell>SBRF_HighQuality</Table.Cell>
-                                    <Table.Cell>34:a8:4e:81:57:7c</Table.Cell>
-                                    <Table.Cell>44</Table.Cell>
-                                    <Table.Cell>-61</Table.Cell>
-                                    <Table.Cell>RU</Table.Cell>
-                                    <Table.Cell>NONE</Table.Cell>
-                                    <Table.Cell>2019-10-07 22:22:05</Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
-                                    <Table.Cell>Onlime_46</Table.Cell>
-                                    <Table.Cell>78:96:82:76:35:85</Table.Cell>
-                                    <Table.Cell>11</Table.Cell>
-                                    <Table.Cell>-73</Table.Cell>
-                                    <Table.Cell>RU</Table.Cell>
-                                    <Table.Cell>WPA2(PSK/AES/AES)</Table.Cell>
-                                    <Table.Cell>2019-10-07 22:22:05</Table.Cell>
-                                </Table.Row>
+                                <Rows items={this.state.targetDevice}/>
                             </Table.Body>
                         </Table>
                     </Modal.Content>
