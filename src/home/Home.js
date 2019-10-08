@@ -18,8 +18,10 @@ class Home extends Component {
             deviceInfoModal: false,
             deviceInfoModalClose: true,
             deviceDeleteModalClose: true,
-            targetDeviceId:'',
-        };
+            targetDeviceId: '',
+            targetDevice: null
+        }
+        ;
 
         this.closeDeviceInfoModal = this.closeDeviceInfoModal.bind(this);
         this.closeDeviceDeleteModal = this.closeDeviceDeleteModal.bind(this);
@@ -169,7 +171,7 @@ class Home extends Component {
 
                 <Modal open={this.state.deviceInfoModal} onClose={this.closeDeviceInfoModal} dimmer="blurring"
                        size="tiny" className="device-modal-conf">
-                    <Modal.Header className="modal-header">Информация о полученных данных с устрйства</Modal.Header>
+                    <Modal.Header className="modal-header">Информация о полученных данных с устройства</Modal.Header>
                     <Modal.Content className="modal-content">
                         <Table celled>
                             <Table.Header>
