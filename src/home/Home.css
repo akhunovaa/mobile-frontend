@@ -28,6 +28,9 @@
     padding-left: 12px;
     padding-right: 12px;
 }
+.modal-header {
+    height: 60px !important;
+}
 
 
 .device-cell-header {

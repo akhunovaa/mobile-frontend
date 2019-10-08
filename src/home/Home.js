@@ -37,8 +37,11 @@ class Home extends Component {
         this.setState({deviceInfoModalClose: true, deviceInfoModal: false});
     }
 
-    showDeviceInfoModal() {
-        this.setState({deviceInfoModalClose: false, deviceInfoModal: true});
+    showDeviceInfoModal(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        const deviceId = data.get('deviceId');
+        this.setState({deviceInfoModalClose: false, deviceInfoModal: true, targetDeviceId: deviceId});
     }
 
     showDeviceDeleteModal(event) {
@@ -116,23 +119,23 @@ class Home extends Component {
                                             <label style={{marginRight: '12px'}}>ОС: {item.os_version}</label>
                                         </div>
                                         <div className="status-activity">
-                                            <label>IP адрес устройства:  {item.ip_address}</label>
+                                            <label>IP:  {item.ip_address}</label>
                                         </div>
                                         <div className="status-activity">
-                                            <label style={{marginRight: '12px'}}>MAC адрес устройства: {item.mac_address}</label>
+                                            <label style={{marginRight: '12px'}}>MAC: {item.mac_address}</label>
                                         </div>
                                     </div>
                                     <div className='device-cell-body'>
                                         <form onSubmit={this.showDeviceInfoModal}>
                                             <input ref={this.currentDeviceId} id="deviceId" name="deviceId" type="hidden" value={item.device_id}/>
-                                            <Button basic icon="pencil"
+                                            <Button  color='vk' icon="info"
                                                     content='Подробнее'/>
                                         </form>
-                                        <Button basic icon="group"
+                                        <Button disabled basic icon="wifi"
                                                 content={item.wifi_data.length}/>
                                         <form onSubmit={this.showDeviceDeleteModal}>
                                             <input ref={this.currentDeviceId} id="deviceId" name="deviceId" type="hidden" value={item.device_id}/>
-                                            <Button basic icon="trash" content='Удалить'/>
+                                            <Button negative basic icon="trash" content='Удалить'/>
                                         </form>
                                     </div>
                                 </div>
@@ -145,10 +148,9 @@ class Home extends Component {
         return (
             <div className={"main"}>
                 <div className="tools-header">
-                    <Header as='h1' floated={'left'} textAlign={'left'} size={'tiny'}>
+                    <Header as='h1'  style={{height: '50px'}} floated={'left'} textAlign={'left'} size={'tiny'}>
                         <Header.Content>
-                            Главная страница
-                            <Header.Subheader>Инструмент по сбору и анализу Wi-Fi сетей</Header.Subheader>
+                            <Header.Subheader style={{height: '50px'}}>Инструмент по сбору и анализу Wi-Fi сетей</Header.Subheader>
                         </Header.Content>
                     </Header>
                 </div>
@@ -173,7 +175,7 @@ class Home extends Component {
                     </Modal.Content>
                     <Modal.Actions>
                         <Button
-                            basic
+                            color='vk'
                             content="Закрыть"
                             onClick={this.closeDeviceInfoModal}
                         />
