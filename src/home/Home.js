@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Home.css';
-import {Header, Grid, Button, Segment, Menu, Tab, Icon} from "semantic-ui-react";
+import {Header, Grid, Button, Segment, Modal, Container, Icon} from "semantic-ui-react";
 import {dataListGet} from "../util/APIUtils";
 import Alert from 'react-s-alert';
 
@@ -8,17 +8,49 @@ class Home extends Component {
 
     _isMounted = false;
 
+    currentDeviceId = React.createRef();
+
     constructor(props) {
         super(props);
         this.state = {
-            dataList: []
+            dataList: [],
+            deviceDeleteModal: false,
+            deviceInfoModal: false,
+            deviceInfoModalClose: true,
+            deviceDeleteModalClose: true,
+            targetDeviceId:'',
         };
 
+        this.closeDeviceInfoModal = this.closeDeviceInfoModal.bind(this);
+        this.closeDeviceDeleteModal = this.closeDeviceDeleteModal.bind(this);
+        this.deviceDelete = this.deviceDelete.bind(this);
+        this.showDeviceDeleteModal = this.showDeviceDeleteModal.bind(this);
+        this.showDeviceInfoModal = this.showDeviceInfoModal.bind(this);
     }
+
+
+    closeDeviceDeleteModal() {
+        this.setState({deviceDeleteModalClose: true, deviceDeleteModal: false});
+    }
+
+    closeDeviceInfoModal() {
+        this.setState({deviceInfoModalClose: true, deviceInfoModal: false});
+    }
+
+    showDeviceInfoModal() {
+        this.setState({deviceInfoModalClose: false, deviceInfoModal: true});
+    }
+
+    showDeviceDeleteModal(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        const deviceId = data.get('deviceId');
+        this.setState({deviceDeleteModalClose: false, deviceDeleteModal: true, targetDeviceId: deviceId});
+    }
+
 
     componentDidMount() {
         this._isMounted = true;
-        console.log(this.state.dataList);
         if (this.state.dataList.length > 0) return;
         dataListGet()
             .then(response => {
@@ -26,7 +58,6 @@ class Home extends Component {
                     this.setState({
                         dataList : response.response
                     });
-                    console.log(response.response);
                 }
             }).catch(error => {
             this.setState({
@@ -34,6 +65,30 @@ class Home extends Component {
             });
             Alert.error('Ошибка получения списка проектов' || (error && error.message));
         });
+    }
+
+    deviceDelete(event) {
+        event.preventDefault();
+        if (!this.state.targetDeviceId) {
+            return
+        }
+        const deviceDeleteRequest = Object.assign({}, {
+            'id': this.state.targetDeviceId
+        });
+        this.closeDeviceDeleteModal();
+        // deviceDeleteRequestSend(projectDeleteRequest)
+        //     .then(response => {
+        //         if (response.error) {
+        //             Alert.warning(response.error + '. Необходимо заново авторизоваться.');
+        //         }else if (response.success === false) {
+        //             Alert.warning(response.message);
+        //         } else {
+        //             this.reload();
+        //             Alert.success('Проект  "' + response.project.name + '" успешно удален');
+        //         }
+        //     }).catch(error => {
+        //     console.log(error)
+        // });
     }
 
     componentWillUnmount() {
@@ -51,18 +106,34 @@ class Home extends Component {
                             <Segment>
                                 <div className='device-cell-container'>
                                     <div className='device-cell-header'>
-                                        <Header sub floated='left'>
-                                            <Header.Content>
-                                                {item.model_name}
-                                            </Header.Content>
-                                        </Header>
+                                        <div className="status-activity">
+                                            <label style={{marginRight: '12px'}}>Время: {item.created ? new Date(item.created).toLocaleString() : 'неизвестно'}</label>
+                                        </div>
+                                        <div className="status-activity">
+                                            <label style={{marginRight: '12px'}}>Устройство: {item.model_name}</label>
+                                        </div>
+                                        <div className="status-activity">
+                                            <label style={{marginRight: '12px'}}>ОС: {item.os_version}</label>
+                                        </div>
+                                        <div className="status-activity">
+                                            <label>IP адрес устройства:  {item.ip_address}</label>
+                                        </div>
+                                        <div className="status-activity">
+                                            <label style={{marginRight: '12px'}}>MAC адрес устройства: {item.mac_address}</label>
+                                        </div>
                                     </div>
-                                    <div className='device-cell-update-body'>
-                                        {item.os_version ? item.os_version : <span>&emsp;</span>}
-                                        <br/>
-                                        {item.ip_address ? item.ip_address : <span>&emsp;</span>}
-                                        <br/>
-                                        {item.mac_address ? item.mac_address : <span>&emsp;</span>}
+                                    <div className='device-cell-body'>
+                                        <form onSubmit={this.showDeviceInfoModal}>
+                                            <input ref={this.currentDeviceId} id="deviceId" name="deviceId" type="hidden" value={item.device_id}/>
+                                            <Button basic icon="pencil"
+                                                    content='Подробнее'/>
+                                        </form>
+                                        <Button basic icon="group"
+                                                content={item.wifi_data.length}/>
+                                        <form onSubmit={this.showDeviceDeleteModal}>
+                                            <input ref={this.currentDeviceId} id="deviceId" name="deviceId" type="hidden" value={item.device_id}/>
+                                            <Button basic icon="trash" content='Удалить'/>
+                                        </form>
                                     </div>
                                 </div>
                             </Segment>
@@ -93,6 +164,46 @@ class Home extends Component {
                     }
 
                 </div>
+
+                <Modal open={this.state.deviceInfoModal} onClose={this.closeDeviceInfoModal} dimmer="blurring"
+                       size="tiny" className="device-modal-conf">
+                    <Modal.Header className="modal-header">Информация о полученных данных с устрйства</Modal.Header>
+                    <Modal.Content className="modal-content">
+
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button
+                            basic
+                            content="Закрыть"
+                            onClick={this.closeDeviceInfoModal}
+                        />
+                    </Modal.Actions>
+                </Modal>
+
+                <Modal  open={this.state.deviceDeleteModal} onClose={this.closeDeviceDeleteModal} dimmer="blurring"
+                        size="tiny" className="device-modal-conf">
+                    <Modal.Header className="modal-header">Удалить устройство</Modal.Header>
+                    <Modal.Content>
+                        <Container className="modal-container">
+                            <p>
+                                Вы уверены что хотите удалить данное устройство?
+                            </p>
+                        </Container>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button
+                            color='vk'
+                            content="Отменить"
+                            onClick={this.closeDeviceDeleteModal}
+                        />
+                        <Button
+                            className="menu-update"
+                            negative
+                            content="Удалить"
+                            onClick={this.deviceDelete}
+                        />
+                    </Modal.Actions>
+                </Modal>
             </div>
         )
     }

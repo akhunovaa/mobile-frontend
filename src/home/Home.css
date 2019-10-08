@@ -35,10 +35,17 @@
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
+    height: 115px;
 }
 
 
-.device-cell-update-body {
+.status-activity {
+    font-weight: bold;
+}
+
+
+
+.device-cell-body {
     display: inline-flex;
     overflow: overlay;
     width: 100%;
