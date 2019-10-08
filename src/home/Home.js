@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Home.css';
-import {Header, Grid, Button, Segment, Modal, Container, Icon} from "semantic-ui-react";
+import {Header, Grid, Button, Segment, Modal, Container, Table} from "semantic-ui-react";
 import {dataListGet} from "../util/APIUtils";
 import Alert from 'react-s-alert';
 
@@ -171,7 +171,49 @@ class Home extends Component {
                        size="tiny" className="device-modal-conf">
                     <Modal.Header className="modal-header">Информация о полученных данных с устрйства</Modal.Header>
                     <Modal.Content className="modal-content">
+                        <Table celled>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell>SSID</Table.HeaderCell>
+                                    <Table.HeaderCell>BSSID</Table.HeaderCell>
+                                    <Table.HeaderCell>CHANNEL</Table.HeaderCell>
+                                    <Table.HeaderCell>RSSI</Table.HeaderCell>
+                                    <Table.HeaderCell>CC</Table.HeaderCell>
+                                    <Table.HeaderCell>SECURITY</Table.HeaderCell>
+                                    <Table.HeaderCell>CREATED TIME</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
 
+                            <Table.Body>
+                                <Table.Row>
+                                    <Table.Cell>Sberbank-Guest</Table.Cell>
+                                    <Table.Cell>34:a8:4e:1f:19:7f</Table.Cell>
+                                    <Table.Cell>64</Table.Cell>
+                                    <Table.Cell>-81</Table.Cell>
+                                    <Table.Cell>RU</Table.Cell>
+                                    <Table.Cell>NONE</Table.Cell>
+                                    <Table.Cell>2019-10-07 13:26:33</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
+                                    <Table.Cell>SBRF_HighQuality</Table.Cell>
+                                    <Table.Cell>34:a8:4e:81:57:7c</Table.Cell>
+                                    <Table.Cell>44</Table.Cell>
+                                    <Table.Cell>-61</Table.Cell>
+                                    <Table.Cell>RU</Table.Cell>
+                                    <Table.Cell>NONE</Table.Cell>
+                                    <Table.Cell>2019-10-07 22:22:05</Table.Cell>
+                                </Table.Row>
+                                <Table.Row>
+                                    <Table.Cell>Onlime_46</Table.Cell>
+                                    <Table.Cell>78:96:82:76:35:85</Table.Cell>
+                                    <Table.Cell>11</Table.Cell>
+                                    <Table.Cell>-73</Table.Cell>
+                                    <Table.Cell>RU</Table.Cell>
+                                    <Table.Cell>WPA2(PSK/AES/AES)</Table.Cell>
+                                    <Table.Cell>2019-10-07 22:22:05</Table.Cell>
+                                </Table.Row>
+                            </Table.Body>
+                        </Table>
                     </Modal.Content>
                     <Modal.Actions>
                         <Button
