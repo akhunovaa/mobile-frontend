@@ -154,14 +154,14 @@ class Home extends Component {
                                     <div className='device-cell-body'>
                                         <form onSubmit={this.showDeviceInfoModal}>
                                             <input ref={this.currentDeviceId} id="deviceId" name="deviceId" type="hidden" value={item.device_id}/>
-                                            <Button  color='vk' icon="info"
+                                            <Button size='small' color='vk' icon="info"
                                                     content='Подробнее'/>
                                         </form>
-                                        <Button disabled basic icon="wifi"
+                                        <Button size='small' disabled basic icon="wifi"
                                                 content={item.wifi_data.length}/>
                                         <form onSubmit={this.showDeviceDeleteModal}>
                                             <input ref={this.currentDeviceId} id="deviceId" name="deviceId" type="hidden" value={item.device_id}/>
-                                            <Button negative disabled={!this.state.roleAdmin} basic icon="trash" content='Удалить'/>
+                                            <Button size='small' negative disabled={!this.state.roleAdmin} basic icon="trash" content='Удалить'/>
                                         </form>
                                     </div>
                                 </div>
@@ -196,7 +196,7 @@ class Home extends Component {
                         Инструмент по сбору и анализу Wi-Fi сетей
                     </Header>
                 </div>
-                <div style={{ height: 'auto', minHeight: '91vh' }}>
+                <div style={{ height: 'auto', minHeight: '91vh', minWidth: '500px' }}>
                     {
                         this.state.dataList == null && this.state.dataList.length === 0 ? (
                             <label>Данные отстутствуют</label>
@@ -213,7 +213,7 @@ class Home extends Component {
                        size="tiny" className="device-modal-conf">
                     <Modal.Header className="modal-header">{this.state.targetDeviceName}: сети WiFi</Modal.Header>
                     <Modal.Content className="modal-content">
-                        <Table celled>
+                        <Table selectable structured textAlign='center' verticalAlign='middle' size='large' celled>
                             <Table.Header>
                                 <Table.Row textAlign={'center'} >
                                     <Table.HeaderCell>SSID</Table.HeaderCell>
@@ -240,7 +240,7 @@ class Home extends Component {
                     </Modal.Actions>
                 </Modal>
 
-                <Modal  open={this.state.deviceDeleteModal} onClose={this.closeDeviceDeleteModal} dimmer="blurring"
+                <Modal basic open={this.state.deviceDeleteModal} onClose={this.closeDeviceDeleteModal} dimmer="blurring"
                         size="tiny" className="device-modal-conf-delete">
                     <Modal.Header className="modal-header">Удалить устройство</Modal.Header>
                     <Modal.Content>
