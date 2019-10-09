@@ -27,7 +27,7 @@ class MobileAppHeader extends Component {
         return (
             <div id="mobile_header_container">
                 <svg className="mobile_header_body" viewBox="0 0 500 95">
-                    <path id="mobile_header_body" d="M 0 0 L 375 0 L 375 95 L 0 95 L 0 0 Z">
+                    <path id="mobile_header_body" d="M 0 0 L 500 0 L 500 95 L 0 95 L 0 0 Z">
                     </path>
                 </svg>
 

@@ -9,7 +9,7 @@ class MobileAppFooter extends Component {
             <div id="footer_container">
                 <div id="telegram">
                     <svg className="footer_background">
-                        <rect id="footer_background" rx="0" ry="0" x="0" y="0" width="375" height="297">
+                        <rect id="footer_background" rx="0" ry="0" x="0" y="0" width="500" height="297">
                         </rect>
                     </svg>
                 </div>

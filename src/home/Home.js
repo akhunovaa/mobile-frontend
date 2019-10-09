@@ -192,7 +192,7 @@ class Home extends Component {
         return (
             <div className={"main"}>
                 <div className="tools-header">
-                    <Header disabled style={{height: '50px'}} floated={'left'} size={'tiny'}>
+                    <Header disabled style={{height: 'auto'}} floated={'left'} size={'tiny'}>
                         Инструмент по сбору и анализу Wi-Fi сетей
                     </Header>
                 </div>
@@ -211,7 +211,7 @@ class Home extends Component {
 
                 <Modal open={this.state.deviceInfoModal} onClose={this.closeDeviceInfoModal} dimmer="blurring"
                        size="tiny" className="device-modal-conf">
-                    <Modal.Header className="modal-header">{this.state.targetDeviceName}: информация об устройстве</Modal.Header>
+                    <Modal.Header className="modal-header">{this.state.targetDeviceName}: wi-fi сети устройства</Modal.Header>
                     <Modal.Content className="modal-content">
                         <Table celled>
                             <Table.Header>
