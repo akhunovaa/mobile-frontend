@@ -130,7 +130,10 @@ class Home extends Component {
                                 <div className='device-cell-container'>
                                     <div className='device-cell-header'>
                                         <div className="status-activity">
-                                            <label style={{marginRight: '12px', color: 'green'}}>Пользователь: {item.user.username} Email: {item.user.email}</label>
+                                            <label style={{marginRight: '12px', color: 'green'}}>Пользователь: {item.user.username}</label>
+                                        </div>
+                                        <div className="status-activity">
+                                            <label style={{marginRight: '12px', color: 'green'}}>Email: {item.user.email}</label>
                                         </div>
                                         <Divider />
                                         <div className="status-activity">
