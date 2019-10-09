@@ -199,7 +199,7 @@ class Home extends Component {
                         </Header.Content>
                     </Header>
                 </div>
-                <div style={{ height: 'auto' }}>
+                <div style={{ height: 'auto', minHeight: '160vh' }}>
                     {
                         this.state.dataList == null && this.state.dataList.length === 0 ? (
                             <label>Данные отстутствуют</label>
