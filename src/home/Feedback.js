@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Home.css';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react'
 import logo from '../img/logo.jpg';
 import Alert from "react-s-alert";
 import {feedback} from '../util/APIUtils';
