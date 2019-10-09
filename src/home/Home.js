@@ -130,8 +130,9 @@ class Home extends Component {
                                 <div className='device-cell-container'>
                                     <div className='device-cell-header'>
                                         <div className="status-activity">
-                                            <label style={{marginRight: '12px'}}>Пользователь: {item.user.username} Email: {item.user.email}</label>
+                                            <label style={{marginRight: '12px', color: 'green'}}>Пользователь: {item.user.username} Email: {item.user.email}</label>
                                         </div>
+                                        <Segment/>
                                         <div className="status-activity">
                                             <label style={{marginRight: '12px'}}>Время: {item.created ? new Date(item.created).toLocaleString() : 'неизвестно'}</label>
                                         </div>
