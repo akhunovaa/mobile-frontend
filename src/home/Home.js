@@ -241,7 +241,7 @@ class Home extends Component {
                 </Modal>
 
                 <Modal basic open={this.state.deviceDeleteModal} onClose={this.closeDeviceDeleteModal} dimmer="blurring"
-                        size="fullscreen" className="device-modal-conf-delete">
+                        size="small" className="device-modal-conf-delete">
                     <Modal.Header className="modal-header">Удалить устройство</Modal.Header>
                     <Modal.Content>
                         <Container className="modal-container">
