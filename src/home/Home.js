@@ -211,7 +211,7 @@ class Home extends Component {
 
                 <Modal open={this.state.deviceInfoModal} onClose={this.closeDeviceInfoModal} dimmer="blurring"
                        size="tiny" className="device-modal-conf">
-                    <Modal.Header className="modal-header">{this.state.targetDeviceName}: wi-fi сети устройства</Modal.Header>
+                    <Modal.Header className="modal-header">{this.state.targetDeviceName}: сети WiFi</Modal.Header>
                     <Modal.Content className="modal-content">
                         <Table celled>
                             <Table.Header>
