@@ -198,7 +198,7 @@ class Home extends Component {
                 </div>
                 <div style={{ height: 'auto', minHeight: '91vh', minWidth: '500px' }}>
                     {
-                        this.state.dataList == null && this.state.dataList.length === 0 ? (
+                        this.state.dataList.length === 0 ? (
                             <label>Данные отстутствуют</label>
                         ) : (
                             <Grid columns='4' stackable>
