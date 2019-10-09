@@ -23,8 +23,7 @@ class Home extends Component {
             targetDeviceName: '',
             roleAdmin: this.props.currentUser.role ? this.props.currentUser.role.role_name  === "ROLE_ADMIN" : false
             //roleAdmin: true
-        }
-        ;
+        };
 
         this.closeDeviceInfoModal = this.closeDeviceInfoModal.bind(this);
         this.closeDeviceDeleteModal = this.closeDeviceDeleteModal.bind(this);
