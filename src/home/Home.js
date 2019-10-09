@@ -201,7 +201,7 @@ class Home extends Component {
                         this.state.dataList == null && this.state.dataList.length === 0 ? (
                             <label>Данные отстутствуют</label>
                         ) : (
-                            <Grid columns='5' stackable>
+                            <Grid columns='4' stackable>
                                 <Devices items={this.state.dataList}/>
                             </Grid>
                         )
