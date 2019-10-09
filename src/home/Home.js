@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Home.css';
-import {Button, Container, Grid, Header, Modal, Segment, Table} from "semantic-ui-react";
+import {Button, Container, Grid, Header, Modal, Segment, Table, Divider} from "semantic-ui-react";
 import {dataListGet, deviceDeleteRequestSend} from "../util/APIUtils";
 import Alert from 'react-s-alert';
 
@@ -132,7 +132,7 @@ class Home extends Component {
                                         <div className="status-activity">
                                             <label style={{marginRight: '12px', color: 'green'}}>Пользователь: {item.user.username} Email: {item.user.email}</label>
                                         </div>
-                                        <Segment/>
+                                        <Divider />
                                         <div className="status-activity">
                                             <label style={{marginRight: '12px'}}>Время: {item.created ? new Date(item.created).toLocaleString() : 'неизвестно'}</label>
                                         </div>
