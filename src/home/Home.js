@@ -193,10 +193,8 @@ class Home extends Component {
         return (
             <div className={"main"}>
                 <div className="tools-header">
-                    <Header as='h1'  style={{height: '50px'}} floated={'left'} textAlign={'left'} size={'tiny'}>
-                        <Header.Content>
-                            <Header.Subheader style={{height: '50px'}}>Инструмент по сбору и анализу Wi-Fi сетей</Header.Subheader>
-                        </Header.Content>
+                    <Header disabled style={{height: '50px'}} floated={'left'} size={'tiny'}>
+                        Инструмент по сбору и анализу Wi-Fi сетей
                     </Header>
                 </div>
                 <div style={{ height: 'auto', minHeight: '160vh' }}>
@@ -204,7 +202,7 @@ class Home extends Component {
                         this.state.dataList == null && this.state.dataList.length === 0 ? (
                             <label>Данные отстутствуют</label>
                         ) : (
-                            <Grid columns='3' stackable>
+                            <Grid columns='5' stackable>
                                 <Devices items={this.state.dataList}/>
                             </Grid>
                         )
