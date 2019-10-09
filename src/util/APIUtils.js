@@ -146,7 +146,7 @@ export function dataListGet(roleAdmin) {
     }
 }
 export function deviceDeleteRequestSend(deviceId) {
-    const query = "?device_id" + deviceId;
+    const query = "?device_id=" + deviceId;
     return requestGet({
         url: API_BASE_URL + "/mobile/data/delete"  + query,
         method: 'GET',
