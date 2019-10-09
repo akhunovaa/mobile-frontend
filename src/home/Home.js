@@ -126,7 +126,7 @@ class Home extends Component {
                 {
                     items.map(item => (
                         <Grid.Column key={item.device_id}>
-                            <Segment>
+                            <Segment piled raised secondary>
                                 <div className='device-cell-container'>
                                     <div className='device-cell-header'>
                                         <div className="status-activity">
