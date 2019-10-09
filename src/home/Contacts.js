@@ -17,7 +17,7 @@ class Contacts extends Component {
                         </Header>
                         <Container>
                             <p>
-                                Телефон: +7 (911) 566-11-11
+                                Телефон: +7 (926) 545-14-52
                             </p>
                             <p>
                                 E-mail: admin[@]botmasterzzz.com
