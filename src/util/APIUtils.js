@@ -144,6 +144,12 @@ export function dataListGet(roleAdmin) {
             method: 'GET'
         });
     }
-
+}
+export function deviceDeleteRequestSend(deviceId) {
+    const query = "?device_id" + deviceId;
+    return requestGet({
+        url: API_BASE_URL + "/mobile/data/delete"  + query,
+        method: 'GET',
+    });
 }
 

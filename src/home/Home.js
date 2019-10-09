@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Home.css';
 import {Button, Container, Grid, Header, Modal, Segment, Table} from "semantic-ui-react";
-import {dataListGet} from "../util/APIUtils";
+import {dataListGet, deviceDeleteRequestSend} from "../util/APIUtils";
 import Alert from 'react-s-alert';
 
 class Home extends Component {
@@ -31,6 +31,7 @@ class Home extends Component {
         this.deviceDelete = this.deviceDelete.bind(this);
         this.showDeviceDeleteModal = this.showDeviceDeleteModal.bind(this);
         this.showDeviceInfoModal = this.showDeviceInfoModal.bind(this);
+        this.reload = this.reload.bind(this);
     }
 
 
@@ -92,28 +93,30 @@ class Home extends Component {
         if (!this.state.targetDeviceId) {
             return
         }
-        const deviceDeleteRequest = Object.assign({}, {
-            'id': this.state.targetDeviceId
-        });
+        const deviceId = this.state.targetDeviceId;
         this.closeDeviceDeleteModal();
-        // deviceDeleteRequestSend(projectDeleteRequest)
-        //     .then(response => {
-        //         if (response.error) {
-        //             Alert.warning(response.error + '. Необходимо заново авторизоваться.');
-        //         }else if (response.success === false) {
-        //             Alert.warning(response.message);
-        //         } else {
-        //             this.reload();
-        //             Alert.success('Проект  "' + response.project.name + '" успешно удален');
-        //         }
-        //     }).catch(error => {
-        //     console.log(error)
-        // });
+        deviceDeleteRequestSend(deviceId)
+            .then(response => {
+                if (response.error) {
+                    Alert.warning(response.errorMessage + '. Необходимо заново авторизоваться.');
+                }else if (response.success === false) {
+                    Alert.warning(response.errorMessage);
+                } else {
+                    this.reload();
+                    Alert.success('Устройство успешно удалено');
+                }
+            }).catch(error => {
+            console.log(error)
+        });
     }
 
     componentWillUnmount() {
         this._isMounted = false;
     }
+
+    reload (){
+        this.componentDidMount()
+    };
 
     render() {
 
