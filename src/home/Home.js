@@ -22,6 +22,7 @@ class Home extends Component {
             targetDevice: [],
             targetDeviceName: '',
             roleAdmin: this.props.currentUser.role ? this.props.currentUser.role.role_name  === "ROLE_ADMIN" : false
+            //roleAdmin: true
         }
         ;
 
@@ -71,7 +72,7 @@ class Home extends Component {
     componentDidMount(){
         this._isMounted = true;
         if (this.state.dataList.length > 0) return;
-        dataListGet()
+        dataListGet(this.state.roleAdmin)
             .then(response => {
                 if (this._isMounted) {
                     this.setState({

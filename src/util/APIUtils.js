@@ -130,11 +130,20 @@ export function feedback(feedbackRequest) {
     });
 }
 
-export function dataListGet() {
-    return requestGet({
-        url: API_BASE_URL + "/mobile/list",
-        //url: "http://localhost:8016" + "/mobile/list",
-        method: 'GET'
-    });
+export function dataListGet(roleAdmin) {
+    if (roleAdmin) {
+        return requestGet({
+            url: API_BASE_URL + "/mobile/full",
+            //url: "http://localhost:8016" + "/mobile/full",
+            method: 'GET'
+        });
+    }else {
+        return requestGet({
+            url: API_BASE_URL + "/mobile/list",
+            //url: "http://localhost:8016" + "/mobile/list",
+            method: 'GET'
+        });
+    }
+
 }
 
