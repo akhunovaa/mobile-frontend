@@ -22,11 +22,11 @@
 
 .tools-header {
     font-weight: 700;
-    font-size: 1.28571429rem;
+    font-size: 1.88571429rem;
     display: grid;
     width: 100%;
     padding-left: 12px;
-    padding-right: 12px;
+    margin-top: 12px;
 }
 
 .modal-header {
