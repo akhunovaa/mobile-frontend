@@ -20,7 +20,8 @@ class Home extends Component {
             deviceDeleteModalClose: true,
             targetDeviceId: '',
             targetDevice: [],
-            targetDeviceName: ''
+            targetDeviceName: '',
+            roleAdmin: this.props.currentUser.role ? this.props.currentUser.role.role_name  === "ROLE_ADMIN" : false
         }
         ;
 
@@ -67,8 +68,7 @@ class Home extends Component {
     }
 
 
-    componentDidMount() {
-        console.log(this.props.currentUser)
+    componentDidMount(){
         this._isMounted = true;
         if (this.state.dataList.length > 0) return;
         dataListGet()
@@ -151,7 +151,7 @@ class Home extends Component {
                                                 content={item.wifi_data.length}/>
                                         <form onSubmit={this.showDeviceDeleteModal}>
                                             <input ref={this.currentDeviceId} id="deviceId" name="deviceId" type="hidden" value={item.device_id}/>
-                                            <Button negative basic icon="trash" content='Удалить'/>
+                                            <Button negative disabled={!this.state.roleAdmin} basic icon="trash" content='Удалить'/>
                                         </form>
                                     </div>
                                 </div>
