@@ -115,7 +115,7 @@ class Home extends Component {
     }
 
     reload (){
-        this.componentDidMount()
+        window.location.reload();
     };
 
     render() {
