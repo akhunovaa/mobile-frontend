@@ -9,7 +9,7 @@
 
 #footer_background {
     opacity: 1;
-    fill: #51c83773;
+    fill: rgba(71, 191, 51, 0.78);;
     /*stroke: rgb(112, 112, 112);*/
     stroke-width: 1px;
     stroke-linejoin: miter;
