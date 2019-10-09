@@ -68,6 +68,7 @@ class Home extends Component {
 
 
     componentDidMount() {
+        console.log(this.props.currentUser)
         this._isMounted = true;
         if (this.state.dataList.length > 0) return;
         dataListGet()
