@@ -210,7 +210,7 @@ class Home extends Component {
                 </div>
 
                 <Modal open={this.state.deviceInfoModal} onClose={this.closeDeviceInfoModal} dimmer="blurring"
-                       size="tiny" className="device-modal-conf">
+                       size="fullscreen" className="device-modal-conf">
                     <Modal.Header className="modal-header">{this.state.targetDeviceName}: сети WiFi</Modal.Header>
                     <Modal.Content className="modal-content">
                         <Table selectable structured textAlign='center' verticalAlign='middle' size='large' celled>
@@ -241,7 +241,7 @@ class Home extends Component {
                 </Modal>
 
                 <Modal basic open={this.state.deviceDeleteModal} onClose={this.closeDeviceDeleteModal} dimmer="blurring"
-                        size="tiny" className="device-modal-conf-delete">
+                        size="fullscreen" className="device-modal-conf-delete">
                     <Modal.Header className="modal-header">Удалить устройство</Modal.Header>
                     <Modal.Content>
                         <Container className="modal-container">
