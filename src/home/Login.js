@@ -108,6 +108,9 @@ class LoginForm extends Component {
                     <Message>
                         Нет аккаунта? <a href='/signup'>Зарегистрироваться!</a>
                     </Message>
+                    <Message>
+                        Данный ресурс представлен в рамках Хакатона <b>«Лучший по профессии».</b> <i>Задача №10.</i>
+                    </Message>
                 </Grid.Column>
             </Grid>
         );

@@ -123,6 +123,9 @@ class SignUpForm extends Component {
                     <Message>
                         Уже зарегистрированы? <a href='/'>Авторизоваться!!</a>
                     </Message>
+                    <Message>
+                        Данный ресурс представлен в рамках Хакатона <b>«Лучший по профессии».</b> <i>Задача №10.</i>
+                    </Message>
                 </Grid.Column>
             </Grid>
         );
