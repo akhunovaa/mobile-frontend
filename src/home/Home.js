@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Home.css';
-import {Button, Container, Grid, Header, Modal, Segment, Table, Divider} from "semantic-ui-react";
+import {Button, Container, Grid, Header, Modal, Segment, Table, Divider, Icon} from "semantic-ui-react";
 import {dataListGet, deviceDeleteRequestSend} from "../util/APIUtils";
 import Alert from 'react-s-alert';
 
@@ -145,7 +145,10 @@ class Home extends Component {
                                             <label style={{marginRight: '12px'}}>ОС: {item.os_version}</label>
                                         </div>
                                         <div className="status-activity">
-                                            <label>IP:  {item.ip_address}</label>
+                                            <label>Internal IP:  {item.ip_address}</label>
+                                        </div>
+                                        <div className="status-activity">
+                                            <label>External IP:  {item.ext_ip_address}</label>
                                         </div>
                                         <div className="status-activity">
                                             <label style={{marginRight: '12px'}}>MAC: {item.mac_address}</label>
@@ -180,9 +183,11 @@ class Home extends Component {
                             <Table.Cell>{item.bssid}</Table.Cell>
                             <Table.Cell>{item.channel}</Table.Cell>
                             <Table.Cell>{item.rssi}</Table.Cell>
+                            <Table.Cell>{item.distance}</Table.Cell>
+                            <Table.Cell negative={!item.is80211mc} positive={item.is80211mc}>{item.is80211mc ? <Icon name='checkmark' /> : <Icon name='close' />}</Table.Cell>
                             <Table.Cell>{item.cc}</Table.Cell>
                             <Table.Cell>{item.security}</Table.Cell>
-                            <Table.Cell>{new Date(item.created).toLocaleString()}</Table.Cell>
+                            <Table.Cell>{new Date(item.created_time).toLocaleString()}</Table.Cell>
                         </Table.Row>
                     ))
                 }
@@ -220,6 +225,8 @@ class Home extends Component {
                                     <Table.HeaderCell>BSSID</Table.HeaderCell>
                                     <Table.HeaderCell>CHANNEL</Table.HeaderCell>
                                     <Table.HeaderCell>RSSI</Table.HeaderCell>
+                                    <Table.HeaderCell>DISTANCE</Table.HeaderCell>
+                                    <Table.HeaderCell>IEEE 802.11mc</Table.HeaderCell>
                                     <Table.HeaderCell>CC</Table.HeaderCell>
                                     <Table.HeaderCell>SECURITY</Table.HeaderCell>
                                     <Table.HeaderCell>CREATED TIME</Table.HeaderCell>
