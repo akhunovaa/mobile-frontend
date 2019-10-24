@@ -204,7 +204,7 @@ class Home extends Component {
                         Инструмент по сбору и анализу Wi-Fi сетей
                     </Header>
                 </div>
-                <div style={{ height: 'auto', minHeight: '91vh', minWidth: '600px' }}>
+                <div style={{ height: 'auto', minHeight: '96vh', minWidth: '600px' }}>
                     {
                         this.state.dataList.length === 0 ? (
                             <label>Данные отстутствуют</label>
