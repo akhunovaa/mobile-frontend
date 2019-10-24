@@ -153,6 +153,9 @@ class Home extends Component {
                                         <div className="status-activity">
                                             <label style={{marginRight: '12px'}}>MAC: {item.mac_address}</label>
                                         </div>
+                                        <div className="status-activity">
+                                            <label style={{marginRight: '12px'}}>Speed: {item.link_speed}</label>
+                                        </div>
                                     </div>
                                     <div className='device-cell-body'>
                                         <form onSubmit={this.showDeviceInfoModal}>
