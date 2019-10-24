@@ -192,7 +192,7 @@ class Home extends Component {
                                         </form>
                                         <form onSubmit={this.showDeviceTestDataModal}>
                                             <input ref={this.currentDeviceId} id="deviceId" name="deviceId" type="hidden" value={item.device_id}/>
-                                            <Button size='tiny' color='vk' icon="gift" disabled={!item.net_test === 'undefined'}
+                                            <Button size='tiny' color='vk' icon="gift" disabled={item.net_test == null}
                                                     content='Замеры'/>
                                         </form>
                                         <Button size='tiny' disabled basic icon="wifi"
