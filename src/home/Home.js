@@ -16,10 +16,12 @@ class Home extends Component {
             dataList: [],
             deviceDeleteModal: false,
             deviceInfoModal: false,
-            deviceInfoModalClose: true,
+            deviceTestDataModal: false,
+            deviceTestDataModalClose: true,
             deviceDeleteModalClose: true,
             targetDeviceId: '',
             targetDevice: [],
+            targetDeviceTestData: [],
             targetDeviceName: '',
             roleAdmin: this.props.currentUser.role ? this.props.currentUser.role.role_name  === "ROLE_ADMIN" : false
             //roleAdmin: true
@@ -30,6 +32,8 @@ class Home extends Component {
         this.deviceDelete = this.deviceDelete.bind(this);
         this.showDeviceDeleteModal = this.showDeviceDeleteModal.bind(this);
         this.showDeviceInfoModal = this.showDeviceInfoModal.bind(this);
+        this.closeDeviceTestDataModal = this.closeDeviceTestDataModal.bind(this);
+        this.showDeviceTestDataModal = this.showDeviceTestDataModal.bind(this);
         this.reload = this.reload.bind(this);
     }
 
@@ -40,6 +44,10 @@ class Home extends Component {
 
     closeDeviceInfoModal() {
         this.setState({deviceInfoModalClose: true, deviceInfoModal: false});
+    }
+
+    closeDeviceTestDataModal() {
+        this.setState({deviceTestDataModalClose: true, deviceTestDataModal: false});
     }
 
     showDeviceInfoModal(event) {
@@ -57,6 +65,25 @@ class Home extends Component {
         this.setState({
             deviceInfoModalClose: false,
             deviceInfoModal: true,
+            targetDeviceId: deviceId,
+        });
+    }
+
+    showDeviceTestDataModal(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        const deviceId = data.get('deviceId');
+        this.state.dataList.map((i) => {
+            if (i.device_id && i.device_id == deviceId) {
+                this.setState({
+                    targetDeviceTestData: i.net_test,
+                    targetDeviceName: i.model_name
+                });
+            }
+        });
+        this.setState({
+            deviceTestDataModalClose: false,
+            deviceTestDataModal: true,
             targetDeviceId: deviceId,
         });
     }
@@ -160,14 +187,19 @@ class Home extends Component {
                                     <div className='device-cell-body'>
                                         <form onSubmit={this.showDeviceInfoModal}>
                                             <input ref={this.currentDeviceId} id="deviceId" name="deviceId" type="hidden" value={item.device_id}/>
-                                            <Button size='small' color='vk' icon="info"
+                                            <Button size='tiny' color='vk' icon="info"
                                                     content='Подробнее'/>
                                         </form>
-                                        <Button size='small' disabled basic icon="wifi"
+                                        <form onSubmit={this.showDeviceTestDataModal}>
+                                            <input ref={this.currentDeviceId} id="deviceId" name="deviceId" type="hidden" value={item.device_id}/>
+                                            <Button size='tiny' color='vk' icon="gift" disabled={!item.net_test === 'undefined'}
+                                                    content='Замеры'/>
+                                        </form>
+                                        <Button size='tiny' disabled basic icon="wifi"
                                                 content={item.wifi_data.length}/>
                                         <form onSubmit={this.showDeviceDeleteModal}>
                                             <input ref={this.currentDeviceId} id="deviceId" name="deviceId" type="hidden" value={item.device_id}/>
-                                            <Button size='small' negative disabled={!this.state.roleAdmin} basic icon="trash" content='Удалить'/>
+                                            <Button size='tiny' negative disabled={!this.state.roleAdmin} basic icon="trash" content='Удалить'/>
                                         </form>
                                     </div>
                                 </div>
@@ -197,6 +229,20 @@ class Home extends Component {
             </>
         );
 
+        const TestDataRows = ({items}) => (
+            <>
+                {
+                    items.map(item => (
+                        <Table.Row textAlign={'center'} key={item.id}>
+                            <Table.Cell>{item.sent}</Table.Cell>
+                            <Table.Cell>{item.rate}</Table.Cell>
+                            <Table.Cell>{new Date(item.created).toLocaleString()}</Table.Cell>
+                        </Table.Row>
+                    ))
+                }
+            </>
+        );
+
         return (
             <div className={"main"}>
                 <div className="tools-header">
@@ -204,7 +250,7 @@ class Home extends Component {
                         Инструмент по сбору и анализу Wi-Fi сетей
                     </Header>
                 </div>
-                <div style={{ height: 'auto', minHeight: '96vh', minWidth: '600px' }}>
+                <div style={{ height: 'auto', minHeight: '99vh', minWidth: '750px' }}>
                     {
                         this.state.dataList.length === 0 ? (
                             <label>Данные отстутствуют</label>
@@ -246,6 +292,39 @@ class Home extends Component {
                             color='vk'
                             content="Закрыть"
                             onClick={this.closeDeviceInfoModal}
+                        />
+                    </Modal.Actions>
+                </Modal>
+
+                <Modal open={this.state.deviceTestDataModal} onClose={this.closeDeviceTestDataModal} dimmer="blurring"
+                       size="fullscreen" className="device-modal-conf">
+                    <Modal.Header className="modal-header">{this.state.targetDeviceName}: сети WiFi</Modal.Header>
+                    <Modal.Content className="modal-content">
+                        <Table selectable structured textAlign='center' verticalAlign='middle' size='large' celled>
+                            <Table.Header>
+                                <Table.Row textAlign={'center'} >
+                                    <Table.HeaderCell>Отправлено КБ</Table.HeaderCell>
+                                    <Table.HeaderCell>Скорость кб в секунду</Table.HeaderCell>
+                                    <Table.HeaderCell>Время</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+
+                            <Table.Body>
+                                {
+                                    this.state.targetDeviceTestData === 'undefined' ? (
+                                        <label>Данные отстутствуют</label>
+                                    ) : (
+                                        <TestDataRows items={this.state.targetDeviceTestData}/>
+                                    )
+                                }
+                            </Table.Body>
+                        </Table>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <Button
+                            color='vk'
+                            content="Закрыть"
+                            onClick={this.closeDeviceTestDataModal}
                         />
                     </Modal.Actions>
                 </Modal>
