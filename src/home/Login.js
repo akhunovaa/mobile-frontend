@@ -90,7 +90,7 @@ class LoginForm extends Component {
                     </Header>
                     <Form size='large' onSubmit={this.handleSubmit}>
                         <Segment stacked>
-                            <Form.Input  name="login" fluid icon='user' iconPosition='left' placeholder='E-mail или login' onChange={this.handleInputChange} required/>
+                            <Form.Input  name="login" fluid icon='user' iconPosition='left' placeholder='Login' onChange={this.handleInputChange} required/>
                             <Form.Input
                                 name="password"
                                 fluid
