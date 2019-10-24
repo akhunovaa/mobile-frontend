@@ -57,10 +57,10 @@
 .device-cell-body {
     display: inline-flex;
     overflow: overlay;
-    width: 100%;
+    width: auto;
     justify-content: center;
     text-align: center;
-    min-height: 40px;
+    min-height: 70px;
     align-items: center;
 }
 
